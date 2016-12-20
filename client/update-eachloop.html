@@ -1,0 +1,29 @@
+<template name="updateEachLoop">
+
+
+  <table class="table table-bordered table-condensed">
+    <thead>
+      <tr>
+        <td style="width: 85px">Items</td>
+        <td>Tags</td>
+        <td style="width: 250px">Tags Edit</td>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each items}}
+        <tr>
+          <td>{{this.name}}</td>
+          <td>{{this.tags}}</td>
+          <td>
+          {{#autoForm id=makeUniqueID type="update" collection=Collections.Items doc=this autosave=true}}
+            {{> afFormGroup name="is_in_set" options="allowed" noselect=true}} 
+            <br>
+            {{> afFormGroup name="tags" label=false}}
+          {{/autoForm}}
+          </td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+</template>
